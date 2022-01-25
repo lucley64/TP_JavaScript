@@ -50,6 +50,41 @@ function nbJourMois() {
 }
 
 function calcTablMult() {
-    var nombre = document.getElementById("muli").elements["nombre"].value;
-    
+    var nombre = document.getElementById("mult").elements["nombre"].value;
+    var rep = "<br/>";
+
+    nombre = parseInt(nombre);
+
+    if (Number.isInteger(nombre) &&
+        nombre > 0 && nombre <= 10) {
+        for (let index = 1; index <= 10; index++) {
+            rep += nombre + " * " + index + " = " + nombre * index + "<br/>";
+        }
+    }
+    else {
+        rep = "Veuillez saisir un nombre entre 1 et 10";
+    }
+
+    document.write(rep);
+
+}
+
+function calcResultat() {
+    var operation = document.getElementById("calc").elements["oper"].value;
+
+    var resultat = eval(operation);
+
+    document.getElementById("calc").elements["restultat"].value = resultat;
+}
+
+function evalResultat() {
+    var operation = document.getElementById("calc").elements["oper"].value;
+    var resultat = document.getElementById("calc").elements["restultat"].value;
+
+    if(eval(operation) == resultat){
+        document.getElementById("calc").elements["eval"].value = "C'est bon";
+    }
+    else{
+        document.getElementById("calc").elements["eval"].value = "Perdu";
+    }
 }
