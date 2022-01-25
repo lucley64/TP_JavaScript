@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <script src="TP1.js"></script>
+</head>
+
+<body>
+    <form id="form" method="POST">
+        <div>
+            <label for="largeur">Entrer la largeur : </label>
+            <input type="number" name="largeur" id="largeur" required>
+        </div>
+        <div>
+            <label for="longueur">Entrer la longueur : </label>
+            <input type="number" name="longueur" id="longueur" required>
+        </div>
+        <div>
+            <input type="button" onclick="calcPeripetre()" value="Calculer Perimetre">
+            <input type="button" onclick="calcSurface()" value="Calculer Surface">
+        </div>
+    </form>
+
+
+    <input type="button" onclick="nbJourMois()" value="Calculer le nombre de jours d'un mois">
+</body>
+
+</html>
