@@ -22,6 +22,16 @@
 
 
     <input type="button" onclick="nbJourMois()" value="Calculer le nombre de jours d'un mois">
+
+    <p> Table de multiplication : </p>
+    <form id="mult" method="POST">
+        <div>
+            <label for="nombre">Entrer le nombre a afficher la table de multiplacation : </label>
+            <input type="number" name="nombre" id="nombre" required>
+            <input type="button" value="Valider" onclick="calcTablMult()">
+        </div>
+    </form>
+
 </body>
 
 </html>

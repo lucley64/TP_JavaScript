@@ -48,3 +48,8 @@ function nbJourMois() {
 
     alert("Le nombre de jours du mois numero : " + mois + " est de : " + nbJours);
 }
+
+function calcTablMult() {
+    var nombre = document.getElementById("muli").elements["nombre"].value;
+    
+}
