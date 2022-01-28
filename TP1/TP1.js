@@ -76,15 +76,3 @@ function calcResultat() {
 
     document.getElementById("calc").elements["restultat"].value = resultat;
 }
-
-function evalResultat() {
-    var operation = document.getElementById("calc").elements["oper"].value;
-    var resultat = document.getElementById("calc").elements["restultat"].value;
-
-    if(eval(operation) == resultat){
-        document.getElementById("calc").elements["eval"].value = "C'est bon";
-    }
-    else{
-        document.getElementById("calc").elements["eval"].value = "Perdu";
-    }
-}
