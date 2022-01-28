@@ -1,17 +1,84 @@
+EXERCICE 1
+
+<html>
+    <head>
+        <script>
+            function fonctionSimple() {
+            largeur = prompt("Saisir la largeur");
+            longueur = prompt("Saisir la longueur");
+        }
+        </script>
+    </head>
+    <body>
+        <h1> Exercice 1 : Ecriture d'une fonction simple </h1>
+        <p> Cliquer sur le bouton por lancer la fonction </p>
+        <button onclick="fonctionSimple()"> Lancer la fonction </button>    
+    </body>
+</html>
+
+
+
+EXERCICE 2
+
+<html>
+    <head>
+        <script>
+            function fonctionSimple() {
+            largeur = prompt("Saisir la largeur");
+            longueur = prompt("Saisir la longueur");
+
+            alert(largeur * longueur);
+        }
+        </script>
+    </head>
+    <body>
+        <h1> Exercice 2 : Ecriture d'une fonction simple </h1>
+        <p> Cliquer sur le bouton por lancer la fonction </p>
+        <button onclick="fonctionSimple()"> Lancer la fonction </button>    
+    </body>
+</html>
+
+
+
+EXERCICE 3
+
 <html>
 
 <head>
     <script>
-        function fonctionSimple() {
+        function calcSurface() {
             largeur = prompt("Saisir la largeur");
             longueur = prompt("Saisir la longueur");
+
+            alert(largeur * longueur);
         }
 
-        function fonctionSimple2() {
+        function calcPeripetre() {
             largeur = prompt("Saisir la largeur");
             longueur = prompt("Saisir la longueur");
-        }
 
+            alert(largeur * 2 + longueur * 2);
+        }
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 3</h1>
+    <p> Cliquer sur le bouton por lancer la fonction </p>
+    <button onclick="calcSurface()"> Calculer Surface </button>
+    <button onclick="calcPeripetre()"> Calculer Perimetre </button>
+</body>
+
+</html>
+
+
+
+EXERCICE 4
+
+<html>
+
+<head>
+    <script>
         function calcSurface() {
             largeur = document.getElementById("largeur").value;
             longueur = document.getElementById("longueur").value;
@@ -25,7 +92,36 @@
 
             alert("Le perimetre est de " + (largeur * 2 + longueur * 2));
         }
+    </script>
+</head>
 
+<body>
+    <h1> Exercice 4</h1>
+    <form id="form" method="POST">
+        <div>
+            <label for="largeur">Entrer la largeur : </label>
+            <input type="number" name="largeur" id="largeur" required>
+        </div>
+        <div>
+            <label for="longueur">Entrer la longueur : </label>
+            <input type="number" name="longueur" id="longueur" required>
+        </div>
+        <div>
+            <input type="button" onclick="calcPeripetre()" value="Calculer Perimetre">
+            <input type="button" onclick="calcSurface()" value="Calculer Surface">
+        </div>
+    </form></body>
+
+</html>
+
+
+
+EXERCICE 5
+
+<html>
+
+<head>
+    <script>
         function nbJourMois() {
             mois = prompt("Saisir le numero du mois : ");
             annee = prompt("Saisir l'annee : ");
@@ -60,12 +156,30 @@
 
             alert("Le nombre de jours du mois numero : " + mois + " est de : " + nbJours);
         }
+    </script>
+</head>
 
+<body>
+    <h1> Exercice 5</h1>
+    <input type="button" onclick="nbJourMois()" value="Calculer le nombre de jours d'un mois">
+
+</body>
+
+</html>
+
+
+
+EXERCICE 6
+
+<html>
+
+<head>
+    <script>
         function calcTablMult() {
-            nombre = document.getElementById("nombre").value;
+            nombre = document.getElementById("nombre").valueAsNumber;
             rep = "<br/>";
 
-            nombre = parseInt(nombre);
+
 
             if (Number.isInteger(nombre) &&
                 nombre > 0 && nombre <= 10) {
@@ -83,6 +197,31 @@
 
         }
 
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 6</h1>
+    <p> Table de multiplication : </p>
+    <form id="mult" method="POST">
+        <div>
+            <label for="nombre">Entrer le nombre a afficher la table de multiplacation : </label>
+            <input type="number" name="nombre" id="nombre" required>
+            <input type="button" value="Valider" onclick="calcTablMult()">
+        </div>
+    </form>
+</body>
+
+</html>
+
+
+
+EXERCICE 7
+
+<html>
+
+<head>
+    <script>
         function calcResultat() {
             operation = document.getElementById("calc").elements["oper"].value;
 
@@ -95,41 +234,7 @@
 </head>
 
 <body>
-    <h1> Exercice 1 : Ecriture d'une fonction simple </h1>
-    <p> Cliquer sur le bouton por lancer la fonction </p>
-    <button onclick="fonctionSimple()"> Lancer la fonction </button>
-
-
-
-
-    <form id="form" method="POST">
-        <div>
-            <label for="largeur">Entrer la largeur : </label>
-            <input type="number" name="largeur" id="largeur" required>
-        </div>
-        <div>
-            <label for="longueur">Entrer la longueur : </label>
-            <input type="number" name="longueur" id="longueur" required>
-        </div>
-        <div>
-            <input type="button" onclick="calcPeripetre()" value="Calculer Perimetre">
-            <input type="button" onclick="calcSurface()" value="Calculer Surface">
-        </div>
-    </form>
-
-
-    <input type="button" onclick="nbJourMois()" value="Calculer le nombre de jours d'un mois">
-
-    <p> Table de multiplication : </p>
-    <form id="mult" method="POST">
-        <div>
-            <label for="nombre">Entrer le nombre a afficher la table de multiplacation : </label>
-            <input type="number" name="nombre" id="nombre" required>
-            <input type="button" value="Valider" onclick="calcTablMult()">
-        </div>
-    </form>
-
-
+    <h1> Exercice 7</h1>
     <p> Calculatrice : </p>
     <form id="calc" method="post">
         <div>
@@ -141,7 +246,6 @@
             <a href="javascript:calcResultat()"> voir </a>
         </div>
     </form>
-
 </body>
 
 </html>

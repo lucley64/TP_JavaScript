@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <script>
+        function nbJourMois() {
+            mois = prompt("Saisir le numero du mois : ");
+            annee = prompt("Saisir l'annee : ");
+
+            switch (mois) {
+                case "1":
+                case "3":
+                case "5":
+                case "7":
+                case "8":
+                case "10":
+                case "12":
+                    nbJours = 31;
+                    break;
+                case "4":
+                case "6":
+                case "9":
+                case "11":
+                    nbJours = 30;
+                    break;
+                case "2":
+                    if (annee % 4 == 0) {
+                        nbJours = 29;
+                    }
+                    else {
+                        nbJours = 28;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            alert("Le nombre de jours du mois numero : " + mois + " est de : " + nbJours);
+        }
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 5</h1>
+    <input type="button" onclick="nbJourMois()" value="Calculer le nombre de jours d'un mois">
+
+</body>
+
+</html>

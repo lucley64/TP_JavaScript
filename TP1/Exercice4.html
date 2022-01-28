@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script>
+        function calcSurface() {
+            largeur = document.getElementById("largeur").value;
+            longueur = document.getElementById("longueur").value;
+
+            alert("La surface est de " + (largeur * longueur));
+        }
+
+        function calcPeripetre() {
+            largeur = document.getElementById("largeur").value;
+            longueur = document.getElementById("longueur").value;
+
+            alert("Le perimetre est de " + (largeur * 2 + longueur * 2));
+        }
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 4</h1>
+    <form id="form" method="POST">
+        <div>
+            <label for="largeur">Entrer la largeur : </label>
+            <input type="number" name="largeur" id="largeur" required>
+        </div>
+        <div>
+            <label for="longueur">Entrer la longueur : </label>
+            <input type="number" name="longueur" id="longueur" required>
+        </div>
+        <div>
+            <input type="button" onclick="calcPeripetre()" value="Calculer Perimetre">
+            <input type="button" onclick="calcSurface()" value="Calculer Surface">
+        </div>
+    </form></body>
+
+</html>

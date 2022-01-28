@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <script>
+        function calcResultat() {
+            operation = document.getElementById("calc").elements["oper"].value;
+
+            resultat = eval(operation);
+
+            document.getElementById("calc").elements["restultat"].value = resultat;
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 7</h1>
+    <p> Calculatrice : </p>
+    <form id="calc" method="post">
+        <div>
+            <input type="text" name="oper" id="oper" required>
+            <input type="button" value="=" onclick="calcResultat()">
+            <input type="text" name="result" id="restultat">
+        </div>
+        <div>
+            <a href="javascript:calcResultat()"> voir </a>
+        </div>
+    </form>
+</body>
+
+</html>

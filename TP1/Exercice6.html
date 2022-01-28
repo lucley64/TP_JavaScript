@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <script>
+        function calcTablMult() {
+            nombre = document.getElementById("nombre").valueAsNumber;
+            rep = "<br/>";
+
+
+
+            if (Number.isInteger(nombre) &&
+                nombre > 0 && nombre <= 10) {
+                for (let index = 1; index <= 10; index++) {
+                    // rep += nombre + " * " + index + " = " + nombre * index + "<br/>";
+                    rep += `${nombre} * ${index} = ${nombre * index} <br/>`;
+
+                }
+            }
+            else {
+                rep = "Veuillez saisir un nombre entre 1 et 10";
+            }
+
+            document.write(rep);
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1> Exercice 6</h1>
+    <p> Table de multiplication : </p>
+    <form id="mult" method="POST">
+        <div>
+            <label for="nombre">Entrer le nombre a afficher la table de multiplacation : </label>
+            <input type="number" name="nombre" id="nombre" required>
+            <input type="button" value="Valider" onclick="calcTablMult()">
+        </div>
+    </form>
+</body>
+
+</html>
