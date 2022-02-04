@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script>
+        function calcSum(mode) {
+            document.querySelector('#rep').innerHTML = "";
+            i = document.getElementById("nombre").valueAsNumber;
+            if (Number.isInteger(i) && i >= 0) {
+                switch (mode) {
+                    case 1:
+                        try {
+                            rep = somRec(i);
+                        } catch (error) {
+                            rep = "Nombre trop grand";
+                        }                        
+                        break;
+                    case 2:
+                        rep = somFor(i);
+                    default:
+                        break;
+                }
+            } else {
+                rep = "Veuillez saisir un nombre entier positif"
+            }
+            const p = document.createElement("p");
+            p.innerText = rep;
+            document.querySelector('#rep').appendChild(p);
+
+        }
+        function somRec(i) {
+            if (i >= 0) {
+                var resultat = somRec(i - 1) + i;
+            } else {
+                var resultat = 0;
+            }
+            return resultat;
+        }
+
+        function somFor(i) {
+            var resultat = 0;
+            for (i; i >= 0; i--) {
+                resultat += i;                
+            }
+            return resultat;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="number" name="nombre" id="nombre" min="0">
+        <input type="button" value="Calculer la somme recurcivement" onclick="calcSum(1)">
+        <input type="button" value="Calculer la somme avec une boucle for" onclick="calcSum(2)">
+        <div id="rep">
+
+        </div>
+    </form>
+</body>
+
+</html>

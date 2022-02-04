@@ -1,0 +1,56 @@
+<?xml version="1.1"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>Algorithme</nom>
+  <date_creation>4/2/2022 17:41</date_creation>
+  <Elements>
+    <Action>
+      <Position>635;144</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>i</PreAssertion>
+      <PostAssertion>resultat</PostAssertion>
+      <Titre>somRec</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Condition>
+          <Position>651;269</Position>
+          <StyleLien>0</StyleLien>
+          <estUnique>0</estUnique>
+          <operationsLogiques>
+            <operation>
+              <Titre>i >= 0</Titre>
+              <Enfants>
+                <Action>
+                  <Position>442;387</Position>
+                  <StyleLien>1</StyleLien>
+                  <PreAssertion>i</PreAssertion>
+                  <PostAssertion>resultat</PostAssertion>
+                  <Titre>resultat ← somRec(i-1) + i</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants/>
+                </Action>
+              </Enfants>
+            </operation>
+            <operation>
+              <Titre>Sinon</Titre>
+              <Enfants>
+                <Action>
+                  <Position>806;383</Position>
+                  <StyleLien>1</StyleLien>
+                  <PreAssertion>?</PreAssertion>
+                  <PostAssertion>resultat</PostAssertion>
+                  <Titre>resultat ← 0</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>0</DetailsVideVisible>
+                  <Enfants/>
+                </Action>
+              </Enfants>
+            </operation>
+          </operationsLogiques>
+        </Condition>
+      </Enfants>
+    </Action>
+  </Elements>
+</Algorithme>
