@@ -4,24 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        function detectBrowser() {
-            if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
-                return 'Opera';
-            } else if (navigator.userAgent.indexOf("Chrome") != -1) {
-                return 'Chrome';
-            } else if (navigator.userAgent.indexOf("Safari") != -1) {
-                return 'Safari';
-            } else if (navigator.userAgent.indexOf("Firefox") != -1) {
-                return 'Firefox';
-            } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) {
-                return 'IE';//crap
-            } else {
-                return 'Unknown';
-            }
-        }
+        navigator.sayswho = (function () {
 
-        document.write(detectBrowser() + "<br/>");
-        document.write(navigator.appVersion + "<br/>");
+            var userAgent = navigator.userAgent;
+
+            var tem;
+
+            var validNavRegex = /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+
+            var userAgentMatch = userAgent.match(validNavRegex) || [];
+
+            if (/trident/i.test(userAgentMatch[1])) {
+                tem = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+                return 'IE ' + (tem[1] || '');
+            }
+
+            if (userAgentMatch[1] === 'Chrome') {
+                tem = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
+                if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
+            
+            userAgentMatch = userAgentMatch[2] ? [userAgentMatch[1], userAgentMatch[2]] : [navigator.appName, navigator.appVersion, '-?'];
+
+            if ((tem = userAgent.match(/version\/(\d+)/i)) != null) userAgentMatch.splice(1, 1, tem[1]);
+
+            return userAgentMatch.join(' ');
+        })();
+
+        document.write("Nom et version du navigateur : " + navigator.sayswho + " <br/>");
+
+        document.write("Nom du fichier : " + window.location.pathname.split("/").pop() + "<br/>");
+
+        document.write("Dernière modification : " + document.lastModified + "<br/>");
+
+
     </script>
 </head>
 
