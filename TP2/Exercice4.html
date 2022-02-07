@@ -1,43 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-        <script>
-            for(let i = 0; (item = document.getElementById("formulaireReponces").children.item(i)) != null; i++){
-                
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script>
+        function verifRep() {
+            let nombreDeBonnesReponses = 0;
+            for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                if (document.getElementById("num" + i).valueAsNumber == eval(item.innerText)) {
+                    nombreDeBonnesReponses++;
+                }
             }
-        </script>
-    </head>
-    <body>
-        <div id=tablesDeMultiplication>
-            <form action="" id=formulaireReponces>
-            </form>
-        </div>
-        <script>
-            for (let i = 0; i < 4; i++) {
-                p = document.createElement("p");
-                num1 = Math.floor(Math.random() * 10);
-                num2 = Math.floor(Math.random() * 10);
-
-                mult = num1 + "*" + num2;
-
-                p.innerText = mult;
-
-                input = document.createElement("input");
-                input.setAttribute("type", "number");
-                input.setAttribute("id", "num" + i);
-
-                p.appendChild(input);
-                document.getElementById("formulaireReponces").appendChild(p);
-
+            if (confirm("Vous avez " + nombreDeBonnesReponses + " bonnes réponses, correction?")) {
+                for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                    document.getElementById("num" + i).valueAsNumber = eval(item.innerText);
+                }
             }
+        }
+    </script>
+</head>
 
-            btn = document.createElement("button");
-            btn.setAttribute("onclick", "verifRep()");
-            btn.innerText = "Vérifier les résultat";
-            document.getElementById("tablesDeMultiplication").appendChild(btn);
+<body>
+    <div id=tablesDeMultiplication>
+        <form action="" id=formulaireReponses>
+        </form>
+    </div>
+    <script>
+        document.getElementById("formulaireReponses").innerHTML = "";
+        for (let i = 0; i < 4; i++) {
+            p = document.createElement("p");
+            num1 = Math.floor(Math.random() * 10);
+            num2 = Math.floor(Math.random() * 10);
+
+            mult = num1 + "*" + num2;
+
+            p.innerText = mult;
+
+            input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("id", "num" + i);
+
+            p.appendChild(input);
+            document.getElementById("formulaireReponses").appendChild(p);
+
+        }
+
+        btn = document.createElement("button");
+        btn.setAttribute("onclick", "verifRep()");
+        btn.innerText = "Vérifier les résultat";
+        document.getElementById("tablesDeMultiplication").appendChild(btn);
 
 
-        </script>
-    </body>
+    </script>
+</body>
+
 </html>
