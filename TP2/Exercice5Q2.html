@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5</title>
+    <script src="http://www.localeplanet.com/api/translate.js"></script>
+    <script>
+        const couleurs = {
+            "bleu": "blue",
+            "gris": "grey",
+            "vert": "green",
+            "rouge": "red",
+            "blanc": "white",
+            "noir": "black",
+        }
+    </script>
+</head>
+
+<body id="corp">
+    <select name="couleur" id="couleur">
+        <option value="">Selectionner une couleur : </option>
+    </select>
+    <script>
+        let select = document.getElementById("couleur");
+        for (const couleur in couleurs) {
+            let option = document.createElement("option");
+            option.setAttribute("value", couleur);
+            option.innerHTML = couleur;
+            select.appendChild(option);
+        }
+
+        select.onchange = function(){
+            let index = this.selectedIndex;
+            let value = this.children[index].getAttribute("value");
+            if (value) {
+                document.body.style.backgroundColor = couleurs[value];
+            }
+        }
+    </script>
+</body>
+
+</html>

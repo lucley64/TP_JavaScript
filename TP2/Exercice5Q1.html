@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5</title>
+    <script src="http://www.localeplanet.com/api/translate.js"></script>
+    <script>
+        const couleur = {
+            "bleu": "blue",
+            "gris": "grey",
+            "vert": "green"
+        }
+    </script>
+</head>
+
+<body id="corp" style="background-color: initial;">
+    <script>
+        let couleurSaisie = prompt("Saisissez une couleur entre gris, bleu et vert");
+        let color = couleur[couleurSaisie.toLocaleLowerCase()];
+        document.body.style.backgroundColor = color;
+    </script>
+</body>
+
+</html>

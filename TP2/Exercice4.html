@@ -3,36 +3,26 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <script>
-        function verifRep() {
-            let nombreDeBonnesReponses = 0;
-            for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
-                if (document.getElementById("num" + i).valueAsNumber == eval(item.innerText)) {
-                    nombreDeBonnesReponses++;
-                }
-            }
-            if (confirm("Vous avez " + nombreDeBonnesReponses + " bonnes réponses, correction?")) {
-                for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
-                    document.getElementById("num" + i).valueAsNumber = eval(item.innerText);
-                }
-            }
-        }
-    </script>
 </head>
 
 <body>
     <div id=tablesDeMultiplication>
+        <p>Veuiller saisir les réponses (2 chiffres après la virgule)</p>
         <form action="" id=formulaireReponses>
         </form>
     </div>
     <script>
+        const operators = ["+", "-", "*", "/"];
+
         document.getElementById("formulaireReponses").innerHTML = "";
         for (let i = 0; i < 4; i++) {
             p = document.createElement("p");
             num1 = Math.floor(Math.random() * 10);
-            num2 = Math.floor(Math.random() * 10);
+            oper = operators[Math.floor(Math.random() * 4)];
+            estDivision = (oper == "/");
+            num2 = Math.floor(Math.random() * (10 - estDivision) + estDivision);
 
-            mult = num1 + "*" + num2;
+            mult = num1 + oper + num2;
 
             p.innerText = mult;
 
@@ -46,7 +36,21 @@
         }
 
         btn = document.createElement("button");
-        btn.setAttribute("onclick", "verifRep()");
+
+        btn.onclick = function () {
+            let nombreDeBonnesReponses = 0;
+            for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                if (document.getElementById("num" + i).valueAsNumber == (Math.round((eval(item.innerText)*100)))/100) {
+                    nombreDeBonnesReponses++;
+                }
+            }
+            if (confirm("Vous avez " + nombreDeBonnesReponses + " bonnes réponses, correction?")) {
+                for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                    document.getElementById("num" + i).valueAsNumber = (Math.round((eval(item.innerText)*100)))/100;
+                }
+            }
+        }
+
         btn.innerText = "Vérifier les résultat";
         document.getElementById("tablesDeMultiplication").appendChild(btn);
 
