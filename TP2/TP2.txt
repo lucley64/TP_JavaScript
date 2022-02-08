@@ -1,0 +1,282 @@
+
+Exercice 1 : 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        semaine = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"];
+        document.write(semaine.join(", "));
+
+        i = 0;
+        semaine.forEach(jour => {
+            document.writeln("<br/> Jour " + i + " : " + jour);
+            i++;
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+Exercice 2 :
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script>
+        function calcSum(mode) {
+            document.querySelector('#rep').innerHTML = "";
+            i = document.getElementById("nombre").valueAsNumber;
+            if (Number.isInteger(i) && i >= 0) {
+                switch (mode) {
+                    case 1:
+                        try {
+                            rep = somRec(i);
+                        } catch (error) {
+                            rep = "Nombre trop grand";
+                        }                        
+                        break;
+                    case 2:
+                        rep = somFor(i);
+                    default:
+                        break;
+                }
+            } else {
+                rep = "Veuillez saisir un nombre entier positif"
+            }
+            const p = document.createElement("p");
+            p.innerText = rep;
+            document.querySelector('#rep').appendChild(p);
+
+        }
+        function somRec(i) {
+            if (i >= 0) {
+                var resultat = somRec(i - 1) + i;
+            } else {
+                var resultat = 0;
+            }
+            return resultat;
+        }
+
+        function somFor(i) {
+            var resultat = 0;
+            for (i; i >= 0; i--) {
+                resultat += i;                
+            }
+            return resultat;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="number" name="nombre" id="nombre" min="0">
+        <input type="button" value="Calculer la somme recurcivement" onclick="calcSum(1)">
+        <input type="button" value="Calculer la somme avec une boucle for" onclick="calcSum(2)">
+        <div id="rep">
+
+        </div>
+    </form>
+</body>
+
+</html>
+
+Exercice 3 :
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        navigator.sayswho = (function () {
+
+            var userAgent = navigator.userAgent;
+
+            var tem;
+
+            var validNavRegex = /(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i
+
+            var userAgentMatch = userAgent.match(validNavRegex) || [];
+
+            if (/trident/i.test(userAgentMatch[1])) {
+                tem = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+                return 'IE ' + (tem[1] || '');
+            }
+
+            if (userAgentMatch[1] === 'Chrome') {
+                tem = userAgent.match(/\b(OPR|Edge)\/(\d+)/);
+                if (tem != null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+            }
+            
+            userAgentMatch = userAgentMatch[2] ? [userAgentMatch[1], userAgentMatch[2]] : [navigator.appName, navigator.appVersion, '-?'];
+
+            if ((tem = userAgent.match(/version\/(\d+)/i)) != null) userAgentMatch.splice(1, 1, tem[1]);
+
+            return userAgentMatch.join(' ');
+        })();
+
+        document.write("Nom et version du navigateur : " + navigator.sayswho + " <br/>");
+
+        document.write("Nom du fichier : " + window.location.pathname.split("/").pop() + "<br/>");
+
+        document.write("Dernière modification : " + document.lastModified + "<br/>");
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+Exercice 4 :
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+
+<body>
+    <div id=tablesDeMultiplication>
+        <p>Veuiller saisir les réponses (2 chiffres après la virgule)</p>
+        <form action="" id=formulaireReponses>
+        </form>
+    </div>
+    <script>
+        const operators = ["+", "-", "*", "/"];
+
+        document.getElementById("formulaireReponses").innerHTML = "";
+        for (let i = 0; i < 4; i++) {
+            p = document.createElement("p");
+            num1 = Math.floor(Math.random() * 10);
+            oper = operators[Math.floor(Math.random() * 4)];
+            estDivision = (oper == "/");
+            num2 = Math.floor(Math.random() * (10 - estDivision) + estDivision);
+
+            mult = num1 + oper + num2;
+
+            p.innerText = mult;
+
+            input = document.createElement("input");
+            input.setAttribute("type", "number");
+            input.setAttribute("id", "num" + i);
+
+            p.appendChild(input);
+            document.getElementById("formulaireReponses").appendChild(p);
+
+        }
+
+        btn = document.createElement("button");
+
+        btn.onclick = function () {
+            let nombreDeBonnesReponses = 0;
+            for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                if (document.getElementById("num" + i).valueAsNumber == (Math.round((eval(item.innerText)*100)))/100) {
+                    nombreDeBonnesReponses++;
+                }
+            }
+            if (confirm("Vous avez " + nombreDeBonnesReponses + " bonnes réponses, correction?")) {
+                for (let i = 0; (item = document.getElementById("formulaireReponses").children.item(i)) != null; i++) {
+                    document.getElementById("num" + i).valueAsNumber = (Math.round((eval(item.innerText)*100)))/100;
+                }
+            }
+        }
+
+        btn.innerText = "Vérifier les résultat";
+        document.getElementById("tablesDeMultiplication").appendChild(btn);
+
+
+    </script>
+</body>
+
+</html>
+
+Exercice 5 :
+Question 1 :
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5</title>
+    <script src="http://www.localeplanet.com/api/translate.js"></script>
+    <script>
+        const couleur = {
+            "bleu": "blue",
+            "gris": "grey",
+            "vert": "green"
+        }
+    </script>
+</head>
+
+<body id="corp" style="background-color: initial;">
+    <script>
+        let couleurSaisie = prompt("Saisissez une couleur entre gris, bleu et vert");
+        let color = couleur[couleurSaisie.toLocaleLowerCase()];
+        document.body.style.backgroundColor = color;
+    </script>
+</body>
+
+</html>
+
+Question 2 :
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5</title>
+    <script src="http://www.localeplanet.com/api/translate.js"></script>
+    <script>
+        const couleurs = {
+            "bleu": "blue",
+            "gris": "grey",
+            "vert": "green",
+            "rouge": "red",
+            "blanc": "white",
+            "noir": "black",
+        }
+    </script>
+</head>
+
+<body id="corp">
+    <select name="couleur" id="couleur">
+        <option value="">Selectionner une couleur : </option>
+    </select>
+    <script>
+        let select = document.getElementById("couleur");
+        for (const couleur in couleurs) {
+            let option = document.createElement("option");
+            option.setAttribute("value", couleur);
+            option.innerHTML = couleur;
+            select.appendChild(option);
+        }
+
+        select.onchange = function(){
+            let index = this.selectedIndex;
+            let value = this.children[index].getAttribute("value");
+            if (value) {
+                document.body.style.backgroundColor = couleurs[value];
+            }
+        }
+    </script>
+</body>
+
+</html>
