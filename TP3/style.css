@@ -1,0 +1,15 @@
+.image{
+    grid: auto-flow / 50px auto 50px;
+    margin: auto;
+    width: 50%;
+    border: 1px solid green;
+    padding: 10px;
+    height: 25em;
+    display: grid;
+}
+
+img{
+    margin: auto;
+    height: inherit;
+    width: -moz-available;
+}

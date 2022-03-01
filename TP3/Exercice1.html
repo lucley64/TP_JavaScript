@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <title>Exrecice 1</title>
+    <script>
+        const images = [
+            "2000x2000-0-70-26479c61882c4ffeed3d976caf233de2.jpg",
+            "AhuTongariki.JPG",
+            "Bo-te-de-papier-Moai-en-tissu-d-le-de-p-ques-Statue-de-pierre-3D.webp",
+            "index.jpg",
+            "Moai_Rano_raraku.jpg",
+            "moai-voyageur-moai-a-vere-ile-de-Paques-Rapa-Nui.jpg",
+            "papiers-peints-statues-moai-isolement.jpg.jpg"
+        ]
+
+        var indice = 0;
+        const racine = "images/"
+
+        function toNext(direction) {
+            image.src = racine + images[Math.abs(indice =  (indice + direction) % images.length)];
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="image">
+        <button onclick="toNext(-1)"> < </button>
+        <img id="image" name="image" src="images/2000x2000-0-70-26479c61882c4ffeed3d976caf233de2.jpg" alt="ah!">
+        <button onclick="toNext(1)"> > </button>
+    </div>
+</body>
+
+</html>
