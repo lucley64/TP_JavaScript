@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de contact</title>
+
+</head>
+
+<body>
+    <noscript>
+        <div class="noscriptmsg">
+            <h1>Javascript n'est pas activé</h1>
+        </div>
+    </noscript>
+    <h1>Contacter nous</h1>
+    <form id="ContactForm">
+        <p>Name</p><input type="text" name="Name" id="Name" required>
+        <p>Email</p><input type="text" name="Email" id="Email" required>
+        <p>Subject</p><input type="text" name="Subject" id="Subject" required>
+        <p>Catégorie</p>
+        <select name="Category" id="Category">
+            <option value="SmartBuilding">Smart Building</option>
+            <option value="EnergyManagment">Energy Managment</option>
+            <option value="Ontology">Ontology</option>
+            <option value="MicroGrid">Micro Grid</option>
+            <option value="Other" selected>Other</option>
+        </select>
+        <p>Votre Message</p><textarea type="text" name="Message" id="Message"></textarea>
+        <p>Vérification</p>
+        <p id="VerifNbr"></p><input type="text" name="Verif" id="Verif" required>
+        <p></p><button>Send</button>
+    </form>
+
+
+    <script>
+        document.getElementById('VerifNbr').innerHTML = Math.floor(Math.random() * 9999);
+
+
+        function bepboop() {
+            var nbr = Math.floor(Math.random() * 9999);
+            var trouve = false;
+            var mess = "";
+            for (let i = 0; i < 5 && !trouve; i++) {
+                let guess = prompt(mess + "Êtes-vous un robot? Beep Beep Boop? \n Entrer un nombre entre 0 et 9999");
+                if (guess == nbr) {
+                    trouve = true;
+                } else {
+                    if (guess < nbr) {
+                        mess = "Le nombre est plus grand \n";
+                    } else {
+                        mess = "Le nombre est plus petit \n";
+                    }
+                }
+            }
+            if (!trouve) {
+                history.back();
+            }
+        }
+
+        function isChrome() {
+            var isChromium = window.chrome;
+            var winNav = window.navigator;
+            var vendorName = winNav.vendor;
+            var isOpera = typeof window.opr !== "undefined";
+            var isIEedge = winNav.userAgent.indexOf("Edg") > -1;
+            var isIOSChrome = winNav.userAgent.match("CriOS");
+
+            if (isIOSChrome) {
+                // is Google Chrome on IOS
+            } else if (
+                isChromium !== null &&
+                typeof isChromium !== "undefined" &&
+                vendorName === "Google Inc." &&
+                isOpera === false &&
+                isIEedge === false
+            ) {
+                return true;
+            } else {
+                alert("Le navigateur n'est pas chrome");
+                return false;
+            }
+        }
+
+        function verifLang() {
+            var lang = false;
+            for (let index = 0; index < navigator.languages.length && !lang; index++) {
+                lang = navigator.languages[index].match(/fr/i);
+            }
+            if (!lang) {
+                history.back();
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
+        bepboop();
+        isChrome();
+        verifLang();
+
+
+    </script>
+</body>
+
+</html>
