@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H</title>
+</head>
+
+<body>
+    <script>
+        var fenetre;
+        function bougerFen(x, y) {
+            if (fenetre != undefined) {
+                console.log(x + y);
+                fenetre.moveBy(x, y);
+            }
+        }
+    </script>
+    <button onclick="fenetre = window.open('','', 'width=500,height=500')">Ouvrir la fenêtre</button>
+
+    <input id="x" type="number">
+    <input id="y" type="number">
+    <button onclick="bougerFen(x.valueAsNumber, y.valueAsNumber)">Bouger le fenetre</button>
+</body>
+
+</html>

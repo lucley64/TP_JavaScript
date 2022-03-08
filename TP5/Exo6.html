@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>h</title>
+</head>
+
+<body>
+    <script>
+        function addBtn(option) {
+            let opt = document.createElement("option");
+            opt.innerHTML = option.value
+            opt.value = option.value
+            maliste.appendChild(opt);
+        }
+        function markOpt() {
+            maliste.selectedOptions[0].style.color = "red";
+        }
+        function delOpt() {
+            maliste.remove(maliste.selectedIndex)
+        }
+        function liste2Tab() {
+            let tab = [];
+            for (let index = 0; index < maliste.children.length; index++) {
+                tab.push(maliste.children[index].value);
+
+            }
+            return tab;
+        }
+        function inverser(tabAInv) {
+            let tab = [];
+            for (let index = tabAInv.length-1; index >= 0; index--) {
+                tab.push(tabAInv[index]);
+
+            }
+            return tab;
+        }
+    </script>
+    <input type="text" id="option">
+    <button onclick="addBtn(option)">Ajouter l'option</button>
+    <select name="maliste" id="maliste"></select>
+    <button onclick="markOpt()">Marquer l'optin</button>
+    <button onclick="delOpt()">Enlever l'option</button>
+</body>
+
+</html>
